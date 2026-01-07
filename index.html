@@ -391,26 +391,135 @@
 
 
     <!-- CONTACTO -->
-    <section id="contacto" class="py-24 bg-brand-dark text-white reveal">
-        <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div>
-                <h2 class="text-brand-orange font-bold uppercase tracking-widest text-sm mb-4">Contacto</h2>
-                <h3 class="text-4xl font-serif mb-8">Estamos listos para <span class="text-brand-orange italic">defenderte.</span></h3>
-                <div class="space-y-6">
-                    <p class="flex items-center space-x-4 text-gray-400"><span class="w-10 h-10 bg-brand-orange/10 rounded-lg flex items-center justify-center text-brand-orange">☏</span><span>+52 33 3011 3433</span></p>
-                    <p class="flex items-center space-x-4 text-gray-400"><span class="w-10 h-10 bg-brand-orange/10 rounded-lg flex items-center justify-center text-brand-orange">✉</span><span>asistencialegal@curialegal.com.mx</span></p>
-                </div>
-            </div>
-            <div class="bg-white p-10 rounded-3xl">
-                <form id="contact-form" class="space-y-4">
-                    <input type="text" placeholder="Nombre completo" class="w-full p-4 bg-gray-100 rounded-xl text-brand-dark outline-none focus:ring-2 focus:ring-brand-orange" required>
-                    <input type="tel" placeholder="WhatsApp" class="w-full p-4 bg-gray-100 rounded-xl text-brand-dark outline-none focus:ring-2 focus:ring-brand-orange" required>
-                    <textarea placeholder="Cuéntanos tu caso..." rows="4" class="w-full p-4 bg-gray-100 rounded-xl text-brand-dark outline-none focus:ring-2 focus:ring-brand-orange" required></textarea>
-                    <button type="submit" class="w-full bg-brand-orange text-brand-dark font-bold py-4 rounded-xl hover:bg-brand-dark hover:text-white transition-all">AGENDAR CONSULTA</button>
-                </form>
-            </div>
+   <section id="contacto" class="py-24 bg-brand-dark text-white">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+    <!-- COLUMNA IZQUIERDA -->
+    <div>
+      <p class="text-brand-orange font-bold uppercase tracking-widest text-sm mb-4">
+        Soporte y contacto
+      </p>
+
+      <h2 class="text-4xl lg:text-5xl font-serif mb-6 leading-tight">
+        Estamos listos para
+        <span class="text-brand-orange italic">defenderte.</span>
+      </h2>
+
+      <p class="text-gray-300 max-w-lg mb-10">
+        Completa el formulario y uno de nuestros abogados expertos se pondrá
+        en contacto contigo en menos de 24 horas para una evaluación inicial.
+      </p>
+
+      <div class="space-y-6">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-brand-orange rounded-xl flex items-center justify-center text-brand-dark text-xl">
+            ☎
+          </div>
+          <div>
+            <p class="font-semibold">Llámanos</p>
+            <p class="text-gray-300">+52 33 3011 3433</p>
+          </div>
         </div>
-    </section>
+
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-brand-orange rounded-xl flex items-center justify-center text-brand-dark text-xl">
+            ✉
+          </div>
+          <div>
+            <p class="font-semibold">Correo Electrónico</p>
+            <p class="text-gray-300">asistencialegal@curialegal.com.mx</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-brand-orange rounded-xl flex items-center justify-center text-brand-dark text-xl">
+            📍
+          </div>
+          <div>
+            <p class="font-semibold">Ubicación</p>
+            <p class="text-gray-300">
+              Av. Manuel Acuña 2710, Lomas de Guevara, 44679 Guadalajara, Jal.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMNA DERECHA / FORMULARIO -->
+    <div class="bg-white text-brand-dark rounded-3xl p-10 shadow-xl">
+      <form class="space-y-6">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-semibold mb-2">
+              Nombre completo
+            </label>
+            <input
+              type="text"
+              placeholder="Juan Pérez"
+              class="w-full p-4 bg-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-brand-orange"
+              required
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold mb-2">
+              WhatsApp / Teléfono
+            </label>
+            <input
+              type="tel"
+              placeholder="(33) 1234 5678"
+              class="w-full p-4 bg-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-brand-orange"
+              required
+            />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-2">
+            Área de interés
+          </label>
+          <select
+            class="w-full p-4 bg-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-brand-orange"
+          >
+            <option>General</option>
+            <option>Derecho Familiar</option>
+            <option>Derecho Mercantil</option>
+            <option>Derecho Civil</option>
+            <option>Derecho Administrativo / Multas</option>
+            <option>Adeudo Vehicular</option>
+            <option>Derecho de Marca</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-2">
+            Cuéntanos tu caso
+          </label>
+          <textarea
+            rows="4"
+            placeholder="Escribe brevemente los detalles..."
+            class="w-full p-4 bg-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-brand-orange"
+            required
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-brand-orange text-brand-dark font-bold py-4 rounded-xl hover:bg-brand-dark hover:text-white transition-all duration-300"
+        >
+          AGENDAR CONSULTA AHORA
+        </button>
+
+        <p class="text-xs text-gray-400 text-center">
+          Al enviar este formulario, aceptas nuestra política de privacidad y
+          tratamiento de datos.
+        </p>
+      </form>
+    </div>
+
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer class="bg-[#FFFFFF] text-brand-dark pt-16 pb-10 border-t border-black/10">
