@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
@@ -71,20 +70,6 @@
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #031a39; border-radius: 10px; }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
-    "path": "https://esm.sh/path@^0.12.7",
-    "vite": "https://esm.sh/vite@^7.3.0",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body class="bg-brand-white text-brand-black">
 
@@ -106,12 +91,21 @@
                 <a href="#nosotros" class="text-white hover:text-brand-orange transition-colors uppercase text-xs font-bold tracking-widest">Nosotros</a>
                 <a href="#servicios" class="text-white hover:text-brand-orange transition-colors uppercase text-xs font-bold tracking-widest">Servicios</a>
                 <a href="#contacto" class="text-white hover:text-brand-orange transition-colors uppercase text-xs font-bold tracking-widest">Contacto</a>
-                <a href="tel:+523330113433" class="bg-brand-orange text-brand-dark px-6 py-2 rounded-full font-bold text-xs hover:bg-white transition-all shadow-lg">Contactanos</a>
+                <a href="tel:+523330113433" class="bg-brand-orange text-brand-dark px-6 py-2 rounded-full font-bold text-xs hover:bg-white transition-all shadow-lg">Contáctanos</a>
             </nav>
             
             <button id="menu-toggle" class="md:hidden text-white">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden bg-brand-dark/95 border-t border-white/10">
+            <div class="container mx-auto px-6 py-6 flex flex-col space-y-4">
+                <a href="#inicio" class="mobile-link text-white hover:text-brand-orange transition-colors uppercase text-xs font-bold tracking-widest">Inicio</a>
+                <a href="#nosotros" class="mobile-link text-white hover:text-brand-orange transition-colors uppercase text-xs font-bold tracking-widest">Nosotros</a>
+                <a href="#servicios" class="mobile-link text-white hover:text-brand-orange transition-colors uppercase text-xs font-bold tracking-widest">Servicios</a>
+                <a href="#contacto" class="mobile-link text-white hover:text-brand-orange transition-colors uppercase text-xs font-bold tracking-widest">Contacto</a>
+                <a href="tel:+523330113433" class="mobile-link bg-brand-orange text-brand-dark px-6 py-3 rounded-full font-bold text-xs text-center hover:bg-white transition-all shadow-lg">Contáctanos</a>
+            </div>
         </div>
     </header>
 
@@ -210,16 +204,14 @@
     </a>
 
     <!-- SCRIPTS -->
-    <script type="module">
-        import { GoogleGenAI } from "@google/genai";
-
+    <script>
         // DATOS CONSTANTES
         const SERVICES = [
-            { id: 'mer', cat: 'Mercantil', title: 'Derecho Mercantil', img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f', items: ['Cobro de pagaré','Cobro de seguro','Jucios orales','Cobros de cheques','Cargos no reconocidos','Profeco','Cobro de letras de cambio'] },
-            { id: 'fam', cat: 'Familiar', title: 'Materia Familiar', img: 'https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?q=80&w=800&auto=format&fit=crop', items: ['Divorcios', 'Pensión alimenticia', 'Guardia y custodia', 'Pension alimenticia','Juicio testamentario','Régimen de visitas'] },
-            { id: 'civ', cat: 'Civil', title: 'Derecho Civil', img: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=800&auto=format&fit=crop', items: ['Arrendamiento','Cumplimiento de contrato','Contratos','Usucapion','Escrituración' ] },
+            { id: 'mer', cat: 'Mercantil', title: 'Derecho Mercantil', img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f', items: ['Cobro de pagaré','Cobro de seguro','Juicios orales','Cobro de cheques','Cargos no reconocidos','Profeco','Cobro de letras de cambio'] },
+            { id: 'fam', cat: 'Familiar', title: 'Materia Familiar', img: 'https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?q=80&w=800&auto=format&fit=crop', items: ['Divorcios', 'Pensión alimenticia', 'Guardia y custodia', 'Juicio testamentario','Régimen de visitas'] },
+            { id: 'civ', cat: 'Civil', title: 'Derecho Civil', img: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=800&auto=format&fit=crop', items: ['Arrendamiento','Cumplimiento de contrato','Contratos','Usucapión','Escrituración' ] },
             { id: 'adm', cat: 'Administrativo', title: 'Derecho Administrativo', img: 'https://images.unsplash.com/photo-1423592707957-3b212afa6733', items: ['Nulidad de multas de tránsito','Juicio de responsabilidad patrimonial','Nulidad de recargos','Adeudos vehiculares'] },
-            { id: 'prop', cat: 'Porpiedad Intelectual', title: 'Registro de Marca', img: 'https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=800&auto=format&fit=crop', items: ['Propiedad intelectual','Identificación de producto','Protección legal','Contratos de licencia'] }
+            { id: 'prop', cat: 'Propiedad Intelectual', title: 'Registro de Marca', img: 'https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=800&auto=format&fit=crop', items: ['Propiedad intelectual','Identificación de producto','Protección legal','Contratos de licencia'] }
         ];
 
         // HEADER SCROLL
@@ -297,49 +289,19 @@
             tabContainer.appendChild(btn);
         });
         renderService('mer');
+        // MOBILE MENU
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        // AI ASSISTANT LOGIC
-        const aiChat = document.getElementById('ai-chat');
-        const aiMsgBox = document.getElementById('ai-messages');
-        const aiInput = document.getElementById('ai-input');
-        
-        document.getElementById('ai-open').onclick = () => aiChat.classList.toggle('hidden');
-        document.getElementById('ai-close').onclick = () => aiChat.classList.add('hidden');
-
-        const addMsg = (role, text) => {
-            const div = document.createElement('div');
-            div.className = role === 'user' 
-                ? 'bg-brand-orange text-brand-dark p-3 rounded-2xl rounded-tr-none self-end ml-auto max-w-[85%] shadow-sm'
-                : 'bg-white p-3 rounded-2xl rounded-tl-none border border-slate-100 max-w-[85%] shadow-sm';
-            div.innerText = text;
-            aiMsgBox.appendChild(div);
-            aiMsgBox.scrollTop = aiMsgBox.scrollHeight;
-        };
-
-        const handleAi = async () => {
-            const val = aiInput.value.trim();
-            if(!val) return;
-            addMsg('user', val);
-            aiInput.value = '';
-
-            try {
-                const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-                const response = await ai.models.generateContent({
-                    model: 'gemini-3-flash-preview',
-                    contents: val,
-                    config: {
-                        systemInstruction: "Eres el asistente de Curia Legal, Guadalajara. Sé profesional, breve y orienta sobre materias: Familiar, Mercantil y Administrativo. No des consejos definitivos, sugiere cita."
-                    }
-                });
-                addMsg('ai', response.text);
-            } catch (e) {
-                addMsg('ai', "Error de conexión. Intente más tarde.");
-            }
-        };
-
-        document.getElementById('ai-send').onclick = handleAi;
-        aiInput.onkeypress = (e) => e.key === 'Enter' && handleAi();
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
     </script>
-<script type="module" src="/index.tsx"></script>
 </body>
 </html>
