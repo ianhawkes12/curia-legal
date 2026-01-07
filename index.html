@@ -169,44 +169,141 @@
             </div>
         </div>
     </section>
-    <!-- GALERÍA & MULTIMEDIA -->
+  <!-- GALERÍA & MULTIMEDIA -->
 <section id="galeria" class="py-24 bg-white reveal">
   <div class="container mx-auto px-6">
     <div class="text-center mb-16">
       <h2 class="text-brand-orange font-bold uppercase tracking-widest text-sm mb-2">Galería & Multimedia</h2>
-      <h3 class="text-4xl font-serif text-brand-dark">Conozca el entorno profesional de Curia Legal.</h3>
+      <h3 class="text-4xl font-serif text-brand-dark">Casos, resultados y experiencias</h3>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <!-- Instalaciones: Carrusel -->
       <div class="bg-brand-gray rounded-3xl p-6 shadow-xl">
-        <h4 class="text-lg font-bold text-brand-dark mb-4">Galería de imágenes</h4>
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-          <div class="aspect-square rounded-2xl bg-white/70 border border-gray-200 shadow-inner"></div>
-          <div class="aspect-square rounded-2xl bg-white/70 border border-gray-200 shadow-inner"></div>
-          <div class="aspect-square rounded-2xl bg-white/70 border border-gray-200 shadow-inner"></div>
-          <div class="aspect-square rounded-2xl bg-white/70 border border-gray-200 shadow-inner"></div>
-          <div class="aspect-square rounded-2xl bg-white/70 border border-gray-200 shadow-inner"></div>
-          <div class="aspect-square rounded-2xl bg-white/70 border border-gray-200 shadow-inner"></div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-9 h-9 rounded-full bg-white flex items-center justify-center text-brand-orange shadow">
+            🖼️
+          </span>
+          <h4 class="text-lg font-bold text-brand-dark">Instalaciones</h4>
         </div>
-        <p class="text-sm text-gray-500 mt-4">*Aquí puedes agregar tus imágenes más adelante.</p>
+
+        <div class="relative">
+          <button id="gallery-prev" type="button" class="absolute left-3 top-1/2 -translate-y-1/2 bg-brand-dark/80 text-white w-10 h-10 rounded-full shadow-lg hover:bg-brand-dark transition">
+            ‹
+          </button>
+
+          <div class="rounded-2xl overflow-hidden shadow-lg bg-white">
+            <img id="gallery-image" src="img/galeria-1.jpg" alt="Instalaciones Curia Legal" class="w-full h-64 sm:h-72 md:h-80 object-cover cursor-pointer">
+          </div>
+
+          <button id="gallery-next" type="button" class="absolute right-3 top-1/2 -translate-y-1/2 bg-brand-dark/80 text-white w-10 h-10 rounded-full shadow-lg hover:bg-brand-dark transition">
+            ›
+          </button>
+        </div>
+
+        <p class="text-sm text-gray-500 mt-4">*Reemplaza las imágenes en el arreglo JS.</p>
       </div>
 
-      <div class="bg-brand-gray rounded-3xl p-6 shadow-xl flex flex-col">
-        <h4 class="text-lg font-bold text-brand-dark mb-4">Video institucional</h4>
-        <div class="relative w-full overflow-hidden rounded-2xl" style="padding-top: 56.25%;">
+      <!-- Curia Legal en Acción: Video -->
+      <div class="bg-brand-gray rounded-3xl p-6 shadow-xl">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-9 h-9 rounded-full bg-white flex items-center justify-center text-brand-orange shadow">
+            ▶
+          </span>
+          <h4 class="text-lg font-bold text-brand-dark">Curia Legal en Acción</h4>
+        </div>
+        <div class="relative rounded-2xl overflow-hidden shadow-lg bg-white">
+          <div class="absolute inset-0 bg-brand-dark/10 pointer-events-none"></div>
           <iframe
-            class="absolute inset-0 w-full h-full"
+            class="w-full h-64 sm:h-72 md:h-80"
             src="https://www.youtube.com/embed/ID_DEL_VIDEO"
-            title="Video institucional"
+            title="Curia Legal en Acción"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
           ></iframe>
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div class="w-14 h-14 rounded-full bg-white/90 text-brand-orange flex items-center justify-center text-2xl shadow">
+              ▶
+            </div>
+          </div>
         </div>
         <p class="text-sm text-gray-500 mt-4">*Reemplaza ID_DEL_VIDEO con tu video real.</p>
       </div>
     </div>
   </div>
+
+  <!-- Modal / Lightbox -->
+  <div id="gallery-modal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-[9999]">
+    <button id="modal-close" class="absolute top-6 right-6 bg-white text-brand-dark w-10 h-10 rounded-full text-xl shadow-lg">×</button>
+
+    <button id="modal-prev" class="absolute left-6 top-1/2 -translate-y-1/2 bg-white/90 text-brand-dark w-10 h-10 rounded-full text-2xl shadow-lg">‹</button>
+
+    <div class="max-w-5xl w-full px-6">
+      <img id="modal-image" src="img/galeria-1.jpg" alt="Instalaciones Curia Legal" class="w-full max-h-[80vh] object-contain rounded-2xl shadow-2xl">
+    </div>
+
+    <button id="modal-next" class="absolute right-6 top-1/2 -translate-y-1/2 bg-white/90 text-brand-dark w-10 h-10 rounded-full text-2xl shadow-lg">›</button>
+  </div>
+
+  <script>
+    (function () {
+      const images = ["img/galeria-1.jpg", "img/galeria-2.jpg", "img/galeria-3.jpg"];
+      let index = 0;
+
+      const imageEl = document.getElementById("gallery-image");
+      const prevBtn = document.getElementById("gallery-prev");
+      const nextBtn = document.getElementById("gallery-next");
+
+      const modal = document.getElementById("gallery-modal");
+      const modalImage = document.getElementById("modal-image");
+      const modalClose = document.getElementById("modal-close");
+      const modalPrev = document.getElementById("modal-prev");
+      const modalNext = document.getElementById("modal-next");
+
+      const updateImage = () => {
+        imageEl.src = images[index];
+        modalImage.src = images[index];
+      };
+
+      prevBtn.addEventListener("click", () => {
+        index = (index - 1 + images.length) % images.length;
+        updateImage();
+      });
+
+      nextBtn.addEventListener("click", () => {
+        index = (index + 1) % images.length;
+        updateImage();
+      });
+
+      imageEl.addEventListener("click", () => {
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      });
+
+      const closeModal = () => {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      };
+
+      modalClose.addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      modalPrev.addEventListener("click", () => {
+        index = (index - 1 + images.length) % images.length;
+        updateImage();
+      });
+
+      modalNext.addEventListener("click", () => {
+        index = (index + 1) % images.length;
+        updateImage();
+      });
+
+      updateImage();
+    })();
+  </script>
 </section>
 
 <!-- FAQ -->
